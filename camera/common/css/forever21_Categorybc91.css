@@ -1,0 +1,90 @@
+﻿.ItemTag1 img{ border-color:white; border-style:solid; border-width:1px; padding-bottom:4px;}
+.ItemTag2{font-weight: bold; color:#000000;}
+.DisplayName{color:#000000; padding-bottom: 2px;}
+.ItemTag3{}
+.ItemTag4{} 
+.ItemTag5{}
+.ItemPrice{font-weight: bold;color:#000}
+.OrigPrice .price{text-decoration:line-through;}
+.discountPrice{color:Red;font-weight: bold;}
+.MoreColors{}
+.dlCategoryList{width:100%;table-layout:fixed;}
+.dlCategoryItem{vertical-align:top; } /* OG width:20%; */
+.ItemImage {padding-bottom:3px;}
+.ItemImage img {width:250px; height:367px; } /* OG width:267px; height:392px; */
+.ItemImageOOS img {width:250px; height:367px; } /* OG width:267px; height:392px; */
+.pdpLink img {border-style: solid; border-color: #ebebeb; border-width:1px!important; }
+
+.td_col_b01 {text-align:left; padding-top:5px;}
+iframe {overflow: hidden;}
+select {font-family: Helvetica, sans-serif;font-size: 11px;font-style: normal;color: #696969;}
+select#ctl00_MainContent_ddlSortType {width:65px;}
+select#ctl00_MainContent_ddlColor {width:50px;}
+select#ctl00_MainContent_ddlSize {width:50px;}
+select#ctl00_MainContent_ddlPrice {width:50px;}
+
+/* MAIN IMAGE MOUSEOVER AREA */
+.ItemImage {position: relative; width:250px; height:367px;} /* OG width:267px; height:392px; */
+/* BUTTON IMAGE */
+.ItemImage a.play {display: none; position: absolute; left: 185px; bottom: 2px; width: 199px; height: 66px; background: transparent url(../../Images/en/common/QuickView_corner_FINAL.gif) no-repeat; text-indent: -2000em; overflow: hidden;}
+/* BUTTON HOVER IMAGE */
+/*.ItemImage a.play:hover {background-position: 0 0px; background: transparent url(/Images/en/quickview/btn_quickview-ro.jpg) no-repeat;}*/
+/* BUTTON HOVER IMAGE SHOW */
+.ItemImage:hover a.play {display: block;}
+
+/*Sangmin Shim 4/1/2014, OOS Item */
+/* MAIN IMAGE MOUSEOVER AREA */
+.ItemImageOOS {position: relative; width:250px; height:367px;}
+/* BUTTON IMAGE */
+.ItemImageOOS a.play {display: none; position: absolute; left: 133px; bottom: 3px; width: 199px; height: 66px; background: transparent url(../../Images/en/common/QuickView_corner_FINAL.gif) no-repeat; text-indent: -2000em; overflow: hidden;}
+/* BUTTON HOVER IMAGE */
+/*.ItemImage a.play:hover {background-position: 0 0px; background: transparent url(/Images/en/quickview/btn_quickview-ro.jpg) no-repeat;}*/
+/* BUTTON HOVER IMAGE SHOW */
+.ItemImageOOS:hover a.play {display: none;}
+
+
+
+/* MAIN IMAGE MOUSEOVER AREA */
+.ItemImage_lrg {position: relative;}
+/* BUTTON IMAGE */
+.ItemImage_lrg a.play {display: none; position: absolute; left: 23px; top: 205px; width: 120px; height: 66px; background: transparent url(../../index.html) no-repeat; text-indent: -2000em; overflow: hidden;}
+/* BUTTON HOVER IMAGE */
+/*.ItemImage_lrg a.play:hover {background-position: 0 0px; background: transparent url(/Images/en/quickview/btn_quickview-ro.jpg) no-repeat;}*/
+/* BUTTON HOVER IMAGE SHOW */
+.ItemImage_lrg:hover a.play {display: block;}
+
+/* MAIN IMAGE MOUSEOVER AREA */
+.ItemImage_sml {position: relative; width:199px; height:292px;}
+/* BUTTON IMAGE */
+.ItemImage_sml a.play {display: none; position: absolute; left: 11px; top: 135px; width: 120px; height: 66px; background: transparent url(../../index.html) no-repeat; text-indent: -2000em; overflow: hidden;}
+/* BUTTON HOVER IMAGE */
+/*.ItemImage_sml a.play:hover {background-position: 0 0px; background: transparent url(/Images/en/quickview/btn_quickview-ro.jpg) no-repeat;}*/
+/* BUTTON HOVER IMAGE SHOW */
+.ItemImage_sml:hover a.play {display: block;}
+
+UL.tabNavigation {list-style: none; margin: 0; padding: 10px 0px 5px 0px;}
+UL.tabNavigation LI {display: inline; font-family:Arial, Helvetica, sans-serif; font-size:12px;}
+UL.tabNavigation LI A {padding: 7px 30px; background-color: #ccc; color: #000; text-decoration: none; font-weight:bold;}
+UL.tabNavigation LI A.selected,
+UL.tabNavigation LI A:hover {background-color: #333; color: #fff; font-weight:bold;}
+UL.tabNavigation LI A:focus {outline: 0;}
+div.tabs > div {padding: 0px; margin-top: 3px;}
+div.tabs > div h2 {margin-top: 0;}
+#first {background-color: #fff; border-top:solid 1px #CCC; width:820px; overflow:hidden;}		
+#slider3 Li { width:820px;}
+#second {background-color: #fff; border-top:solid 1px #CCC; width:820px; overflow:hidden;}
+#slider4 Li { width:820px;}
+#productblock {width:140px; height:260px; display:inline-block; zoom:1; *display: inline; _width:140px; _height:300px; margin:0px 20px 0px 20px; text-align:center; font-family:Arial, Helvetica, sans-serif; font-size:12px; vertical-align: top; }
+li{list-style-type:none;}
+#productblock img{padding:0px 0px 10px 0px; width:140px; height:171px;}
+span.productblock-price{color:#000; font-weight:bold; font-size:12px;}
+span.productblock-brandname{padding:15px 0px 0px 0px;font-weight:bold; color:#696969; font-size:12px;}
+
+.br-sf-widget-merchant-img img {height: 170px;}
+.br-sf-widget {width: 190px; height: 300px; position:relative; float:left; padding-right: 15px; padding-left: 15px; text-align: left;}    
+.br-sf-widget {width:160px;}
+.br-sf-widget-merchant-img img{height:160px;}
+
+.stepcarousel {position: relative; background-color:#ffffff; border: 0px; overflow: hidden; width: 820px; height: 550px;}  
+.stepcarousel .belt{position: absolute; background-color:#ffffff; left: 0; top: 0;}
+.stepcarousel .panel{float: left; background-color:#ffffff; overflow: hidden; margin: 0px; width: 820px;}  
