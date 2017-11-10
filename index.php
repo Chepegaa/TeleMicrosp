@@ -1,212 +1,208 @@
-<?php
-  // include("config.php");
-header("Content-Type: text/html; charset=utf-8");
 
-   session_start();
-   
+<html>  
+  <head>      
+    <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon.png">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Intelligent Microscope by Chepe">
+    <meta name="chepegaa@gmail.com" content="Jose Gonzalez">
 
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
+
+    <title>Intelligent Microscope by Chepe</title>   
+    <script src="http://cdn.pubnub.com/pubnub-3.7.1.min.js"></script>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.8.0.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>  
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stylepi.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/skate.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script src="http://cdn.pubnub.com/pubnub-3.7.11.min.js"></script>
+  <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.8.0.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  
+
+  <script type="text/javascript">
+       
+    function publishSampleMessage(mensaje) {
+
+
+        var dialog = bootbox.dialog({
+        title: mensaje,
+        message: '<p><i class="fa fa-spin fa-spinner"></i> StepperA Forward...</p>'
+});
+
+setTimeout(function(){
+        dialog.modal('hide');
+    }, 500);
+
+        var pubnub = new PubNub({
+        publishKey :'pub-c-7581ef06-2ca4-4472-834c-74b43e7d85df',
+        subscribeKey :'sub-c-eba3f01a-27a0-11e7-bc52-02ee2ddab7fe'
+         });
+
+        var publishConfig = {
+            channel : "Channel-x1izfsa8x",
+            message : mensaje
+        };
+    
+
+        console.log("Subscribing..");
+
+
+        pubnub.subscribe({
+        channels: ['Channel-x1izfsa8x'], 
+        message: mensaje
+    });
+
+
+        pubnub.publish(publishConfig);
+    }
+       
+
+  </script>
+
+
+ <script type="text/javascript">
+            
+    (function(){
+
+  var settings = {
+    channel: 'Channel-t5xjqkdul',
+    publish_key: 'pub-c-c20380f7-57cf-4c65-87a8-9daea09445a7',
+    subscribe_key: 'sub-c-cf156a46-2d45-11e7-9a1a-0619f8945a4f'
+  };
+
+  var pubnub = PUBNUB(settings);
+
+  var lightLiving = document.getElementById('lightLiving');
+
+  pubnub.subscribe(
+    channel: settings.channel,  
+  )
+
+
+  function publishUpdate(data) {
+    pubnub.publish({
+      channel: settings.channel, 
+      message: data
+    });
+  }
+
+  lightLiving.addEventListener('change', function(e){
+    publishUpdate({item: 'light-living', brightness: +this.value});
+  }, false);
+})();
       
-      $myusername = $_POST['username'];
-      $mypassword = $_POST['password']; 
-      
-      $link= new mysqli("localhost:3308","root","admin","jcautosonido") or 
-      die("No se Pudo conectar a la Base de Datos");
-      
-      $sql = "SELECT idusuarios FROM usuarios WHERE email = '$myusername' and contraseña = '$mypassword'";
-      
-      @$result = mysqli_query($link,$sql);    
-      
-     // $row = mysqli_fetch_array($result,MYSQLI_NUM);
-     // $active = $row[0];
-      
-      @$count = mysqli_num_rows($result);
-      
-      // If result matched $myusername and $mypassword, table row must be 1 row
-        
-      if($count == 1) {
-        // session_register("myusername");
-       // $_SESSION['login_user'] = $myusername;
-         
-         header("location: Camera/index.html");
-      }else {
-         echo "<script>alert('Your Login Name or Password is invalid.')</script>";   
-   }
- }
-?>
+  </script>
 
-<!doctype html>
-<html lang="en">
-
-<head>
-	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-	<title>Optical Microscope By Chepe</title>
-
-	<!-- Canonical SEO -->
-    <link rel="canonical" href="http://www.creative-tim.com/product/paper-dashboard-pro"/>
-
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <meta name="viewport" content="width=device-width" />
-
-
-     <!-- Bootstrap core CSS     -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-
-    <!--  Paper Dashboard core CSS    -->
-    <link href="css/paper-dashboard23cd.css?v=1.2.1" rel="stylesheet"/>
-
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="css/demo.css" rel="stylesheet" />
-
-
-    <!--  Fonts and icons     -->
-    <link href="../../../../maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
-    <link href="css/themify-icons.css" rel="stylesheet">
-</head>
-
-<body>
-    <nav class="navbar navbar-transparent navbar-absolute">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="http://demos.creative-tim.com/paper-dashboard-pro/examples/dashboard/overview.html">Optical Microscope</a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                  
-                </ul>
-            </div>
+  </head>
+  <body background="images/background-1.jpg">
+  
+<header class="m-header">
+    <div class="container" id="menu-princ">
+          <a href="#"><img src="images/SEDILAB.png" alt="logo-sedilab"></a>
+      <div id="header-right">
+                    Si tienes problemas con la Página<br>
+                    Contáctanos:
+               <span id="phone">
+                    849-634-5002
+               </span>
+          </div>
         </div>
-    </nav>
+        </header>
+  <br></br>  <br></br>  
+  <div class="embed-responsive embed-responsive-16by9">
+   <iframe class="embed-responsive-item" src="http://192.168.19.90:8081/" autoplay=1></iframe>
+  </div>
+    <section text-align: center;>
+      <section text-align: center;>
+        <div>
+          <div class="caption">StepperA</div>
+          <label for="door">
+            <input  align="center" value="Adelante" type="button" class="action-button" onclick="publishSampleMessage('StepperAForward')">
 
-    <div class="wrapper wrapper-full-page">
-        <div class="full-page login-page" data-color="" data-image="img/background/background-1.jpg">
-        <!--   you can change the color of the filter page using: data-color="blue | azure | green | orange | red | purple" -->
-            <div class="content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form method="post" action="">
-                                <div class="card" data-background="color" data-color="blue">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Login</h3>
-                                    </div>
-                                    <div class="card-content">
-                                        <div class="form-group">
-                                            <label>Email address</label>
-                                            <input type="email" placeholder="Enter email" class="form-control input-no-border" name = "username" >
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" placeholder="Password" class="form-control input-no-border" name = "password">
-                                        </div>
-                                    </div>
-                                    <div class="card-footer text-center">
-                                        <button type="submit" class="btn btn-fill btn-wd ">Let's go</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            <input align="center" value="Atras" type="button" class="action-button" onclick="publishSampleMessage('StepperABack')">
             </div>
-
-        	<footer class="footer footer-transparent">
-                <div class="container">
-                    <div class="copyright">
-                        &copy; <script>document.write(new Date().getFullYear())</script>, made <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com/">José González</a>
-                    </div>
-                </div>
-            </footer>
+          </label>
         </div>
+
+        <div>
+          <div class="caption">StepperB</div>
+          <label for="door">
+           <input value="Adelante" type="button" class="action-button" onclick="publishSampleMessage('StepperBForward')">
+
+            <input value="Atras" type="button" class="action-button" onclick="publishSampleMessage('StepperBBack')">
+            <div class="">
+            </div>
+          </label>
+        </div>
+
+         <div>
+          <div class="caption">StepperC</div>
+          <label for="door">
+            <input value="Adelante" type="button" class="action-button" onclick="publishSampleMessage('StepperCForward')">
+
+            <input value="Atras" type="button" class="action-button" onclick="publishSampleMessage('StepperCBack')">
+            <div class="">
+            </div>
+          </label>
+        </div>
+
+        <div>
+        <!-- flickering light -->
+          <div class="caption">Luminosodad</div>
+          <label for="light-living" class="brightness fa">
+          <input id="lightLiving" type="range" min="0" max="10" step="1" value="0">
+          </label>
+        </div>
+
+      </section>
+
+    </section>
+
+<footer>
+  <div class="container">
+    <div id="footer-1">
+      © 2017 <a id="logo-footer" href="#"><img src="images/logo-sedilab-footer.png" alt="logo-sedilab"></a><br>
+      Proyecto Final By Chepe
+      
     </div>
-</body>
+    <br>
+    <div id="footer-2">
+      <ul>
+        <li class="li-footer" id="li-footer-1">
+          <a href="//www.facebook.com"><span class="icon-facebook"></span></a>
+        </li>
+        <li class="li-footer" id="li-footer-2">
+          <a href="//www.twitter.com"><span class="icon-twitter"></span></a>
+        </li>
+        <li class="li-footer" id="li-footer-3">
+          <a href="//www.instagram.com"><span class="icon-instagram"></span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
 
-	<!--   Core JS Files. Extra: TouchPunch for touch library inside jquery-ui.min.js   -->
-	<script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
-	<script src="js/jquery-ui.min.js" type="text/javascript"></script>
-	<script src="js/perfect-scrollbar.min.js" type="text/javascript"></script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
-
-	<!--  Forms Validations Plugin -->
-	<script src="js/jquery.validate.min.js"></script>
-
-	<!-- Promise Library for SweetAlert2 working on IE -->
-	<script src="js/es6-promise-auto.min.js"></script>
-
-	<!--  Plugin for Date Time Picker and Full Calendar Plugin-->
-	<script src="js/moment.min.js"></script>
-
-	<!--  Date Time Picker Plugin is included in this js file -->
-	<script src="js/bootstrap-datetimepicker.js"></script>
-
-	<!--  Select Picker Plugin -->
-	<script src="js/bootstrap-selectpicker.js"></script>
-
-	<!--  Switch and Tags Input Plugins -->
-	<script src="js/bootstrap-switch-tags.js"></script>
-
-	<!-- Circle Percentage-chart -->
-	<script src="js/jquery.easypiechart.min.js"></script>
-
-	<!--  Charts Plugin -->
-	<script src="js/chartist.min.js"></script>
-
-	<!--  Notifications Plugin    -->
-	<script src="js/bootstrap-notify.js"></script>
-
-	<!-- Sweet Alert 2 plugin -->
-	<script src="js/sweetalert2.js"></script>
-
-	<!-- Vector Map plugin -->
-	<script src="js/jquery-jvectormap.js"></script>
-
-	<!--  Google Maps Plugin    -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFPQibxeDaLIUHsC6_KqDdFaUdhrbhZ3M"></script>
-
-	<!-- Wizard Plugin    -->
-	<script src="js/jquery.bootstrap.wizard.min.js"></script>
-
-	<!--  Bootstrap Table Plugin    -->
-	<script src="js/bootstrap-table.js"></script>
-
-	<!--  Plugin for DataTables.net  -->
-	<script src="js/jquery.datatables.js"></script>
-
-	<!--  Full Calendar Plugin    -->
-	<script src="js/fullcalendar.min.js"></script>
-
-	<!-- Paper Dashboard PRO Core javascript and methods for Demo purpose -->
-	<script src="js/paper-dashboard23cd.js?v=1.2.1"></script>
-
-	<!--   Sharrre Library    -->
-    <script src="js/jquery.sharrre.js"></script>
-
-	<!-- Paper Dashboard PRO DEMO methods, don't include it in your project! -->
-	<script src="js/demo.js"></script>
-
-	<script type="text/javascript">
-        $().ready(function(){
-            demo.checkFullPageBackgroundImage();
-
-            setTimeout(function(){
-                // after 1000 ms we add the class animated to the login/register card
-                $('.card').removeClass('card-hidden');
-            }, 700)
-        });
-	</script>
-
-
-</html>
+  </body>
+  <script src="js/app.js"></script>
+</html>  
